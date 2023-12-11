@@ -1,9 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-shadow: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 600px;
+  background-color: rgb(193, 204, 215);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.gamepad {
+  padding: 10px;
+  position: relative;
+}
+
 #gameboard {
   width: 320px;
   height: 320px;
   background-color: black;
   display: flex;
   flex-wrap: wrap;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 5px;
+  border-radius: 10px;
 }
 .square {
   width: 40px;
@@ -19,12 +48,12 @@
   z-index: -9;
 }
 path {
-    position: relative;
-    z-index: -10;
+  position: relative;
+  z-index: -10;
 }
 .piece {
-    position: relative;
-    z-index: 9;
+  position: relative;
+  z-index: 9;
 }
 
 .beige {
@@ -39,4 +68,55 @@ path {
 }
 .white {
   fill: #fff;
+}
+.info {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 5px;
+}
+.taken_by_white {
+  position: absolute;
+  right: -25px;
+  bottom: 40px;
+  background-color: azure;
+  padding: 7px;
+  border-radius: 5px;
+  min-height: 100px;
+  height: 300px;
+  width: 15px;
+  overflow-y: auto;
+}
+.taken_by_black {
+  position: absolute;
+  left: -25px;
+  top: 14px;
+  background-color: rgb(24, 26, 26);
+  padding: 7px;
+  border-radius: 5px;
+  min-height: 100px;
+  max-height: 480px !important;
+  height: 300px;
+  width: 15px;
+  overflow-y: auto;
+}
+.taken_by_black svg {
+  fill: white;
+}
+#info-display {
+  /* width: 400px;
+  height: 220px;
+  background-color: rgb(201, 193, 193);
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 10; */
+  text-align: center;
+  font-weight: 800;
+  /* border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center; */
 }

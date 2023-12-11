@@ -1,9 +1,13 @@
 const gameBoard = document.querySelector('#gameboard');
 const playerDisplay = document.querySelector('#player');
 const infoDisplay = document.querySelector('#info-display');
+const takenByWhite = document.querySelector('.taken_by_white')
+const takenByBlack = document.querySelector('.taken_by_black')
 
 const width = 8;
 let playerGo = 'black';
+let allTakenPiecesByBlack = []
+let allTakenPiecesByWhite = []
 
 playerDisplay.textContent = playerGo
 
@@ -67,18 +71,32 @@ function dragOver(e) {
 
 function dragDrop(e) {
     e.stopPropagation();
-    // console.log('player go ', playerGo)
-    console.log('e.target', e.target)
     const correctGo = draggedElement.firstChild.classList.contains(playerGo)
     const taken = e.target.classList.contains('piece');
     const valid = checkValidity(e.target)
     const opponentGo = playerGo === 'white' ? 'black' : 'white';
-    // console.log('opponent go ', opponentGo)
     const takenByOpponent = e.target.firstChild?.classList.contains(opponentGo)
 
     if (correctGo) {
         if (takenByOpponent && valid) {
             e.target.parentNode.append(draggedElement)
+            if (e.target.firstChild.classList.contains('white')) {
+                takenByBlack.innerHTML = ''
+                allTakenPiecesByBlack.push(e.target)
+                allTakenPiecesByBlack?.forEach((piece) => {
+                    const item = document.createElement("div")
+                    item.innerHTML = piece.innerHTML
+                    takenByBlack.append(item)
+                })
+            } else if (e.target.firstChild.classList.contains('black')) {
+                takenByWhite.innerHTML = ''
+                allTakenPiecesByWhite.push(e.target)
+                allTakenPiecesByWhite?.forEach((piece) => {
+                    const item = document.createElement("div")
+                    item.innerHTML = piece.innerHTML
+                    takenByWhite.append(item)
+                })
+            }
             e.target.remove()
             checkForWin()
             changePlayer()
@@ -101,13 +119,14 @@ function dragDrop(e) {
 
 }
 
+
 function checkValidity(target) {
     const targetId = Number(target.getAttribute('square-id')) || Number(target.parentNode.getAttribute('square-id'))
     const startId = Number(startPositionId)
     const piece = draggedElement.id
-    console.log('targetId', targetId)
-    console.log('startIdd', startId)
-    console.log('endId', piece)
+    // console.log('targetId', targetId)
+    // console.log('startIdd', startId)
+    // console.log('endId', piece)
 
     switch (piece) {
         case 'pawn':

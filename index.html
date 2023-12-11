@@ -5,12 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chess Game</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="https://kit.fontawesome.com/2ac668210f.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/2ac668210f.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div id="gameboard"></div>
-    <p>It is <span id="player"></span>'s go!</p>
-    <p id="info-display"></p>
+    <main>
+      <section class="gamepad">
+        <div id="gameboard"></div>
+        <p class="info">Now <span id="player"></span>'s Turn!</p>
+        <p id="info-display"></p>
+        <div id="takenList" class="taken_by_white">
+        </div>
+        <div id="takenList" class="taken_by_black">
+        </div>
+      </section>
+    </main>
 
     <script src="pieces.js"></script>
     <script src="script.js"></script>
